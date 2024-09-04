@@ -1,4 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg4qm1eumyu0f"]
+[gd_scene load_steps=6 format=3 uid="uid://bg4qm1eumyu0f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_74jhx"]
+size = Vector3(10.0977, 0.102234, 9.99438)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_la6ry"]
 
@@ -11,9 +14,17 @@ albedo_color = Color(0.00368827, 0.0238748, 0.0135652, 1)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="terrain" type="MeshInstance3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00151062, 0.0071106, -0.026001)
+shape = SubResource("BoxShape3D_74jhx")
+
+[node name="terrain" type="MeshInstance3D" parent="StaticBody3D"]
+physics_interpolation_mode = 1
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 mesh = SubResource("PlaneMesh_la6ry")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ccyms")
 
 [node name="sphere" type="RigidBody3D" parent="."]
@@ -24,3 +35,9 @@ shape = SubResource("SphereShape3D_ydlkx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="sphere"]
 mesh = SubResource("SphereMesh_7oyq0")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11942, 6.63049)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, -0.000536813, -5.83798e-05, 0.000358725, 0.579674, 0.814849, -0.0004036, -0.814849, 0.579674, 0, 3.26846, 0)
