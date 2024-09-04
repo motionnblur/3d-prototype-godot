@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg4qm1eumyu0f"]
+[gd_scene load_steps=5 format=3 uid="uid://bg4qm1eumyu0f"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_la6ry"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccyms"]
 albedo_color = Color(0.00368827, 0.0238748, 0.0135652, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ydlkx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7oyq0"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -11,3 +15,12 @@ albedo_color = Color(0.00368827, 0.0238748, 0.0135652, 1)
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 mesh = SubResource("PlaneMesh_la6ry")
 surface_material_override/0 = SubResource("StandardMaterial3D_ccyms")
+
+[node name="sphere" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32525, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sphere"]
+shape = SubResource("SphereShape3D_ydlkx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="sphere"]
+mesh = SubResource("SphereMesh_7oyq0")
