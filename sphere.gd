@@ -38,3 +38,7 @@ func _process(delta: float) -> void:
 
 func _on_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
 	collided = true
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	print("area entered")
