@@ -21,6 +21,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11942, 6.63049)
 
 [node name="sphere" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32525, 0)
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_fxaeq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sphere"]
@@ -44,3 +46,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ccyms")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, -0.000536813, -5.83798e-05, 0.000358725, 0.579674, 0.814849, -0.0004036, -0.814849, 0.579674, 0, 3.26846, 0)
+
+[connection signal="body_shape_entered" from="sphere" to="sphere" method="_on_body_shape_entered"]
