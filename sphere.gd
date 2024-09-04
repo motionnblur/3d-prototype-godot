@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 	ray_query.collide_with_areas = true
 	var raycast_result = space.intersect_ray(ray_query)
 	
-	if raycast_result.size() > 0:
+	if raycast_result.size() > 0 and raycast_result.collider.name != "sphere":
 		var pos = raycast_result.position
 		pos.y = position.y
 		var dir = (pos - position).normalized()

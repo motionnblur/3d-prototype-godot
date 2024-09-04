@@ -28,7 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32525, 0)
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_fxaeq")
-speed = 3.0
+speed = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sphere"]
 shape = SubResource("SphereShape3D_ydlkx")
