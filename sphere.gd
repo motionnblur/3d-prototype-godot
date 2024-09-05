@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 		var pos = raycast_result.position
 		pos.y = position.y
 		var dir = (pos - position).normalized()
-		position += dir*delta
+		position += dir*delta*speed
 
 
 func _on_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
