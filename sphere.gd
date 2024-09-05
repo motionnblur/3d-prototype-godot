@@ -41,4 +41,5 @@ func _on_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, lo
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
-	print("area entered")
+	area.queue_free()
+	%ProgressBar.value += 5
