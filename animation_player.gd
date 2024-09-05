@@ -2,5 +2,5 @@ extends AnimationPlayer
 
 
 func _ready() -> void:
-	await get_tree().create_timer(randf()).timeout
+	await Global.delay(randf())
 	play("coin_anim")
