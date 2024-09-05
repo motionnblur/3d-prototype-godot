@@ -16,12 +16,12 @@ size = Vector3(10.0977, 0.102234, 9.99438)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccyms"]
 albedo_color = Color(0.00368827, 0.0238748, 0.0135652, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkye5"]
-bg_color = Color(0.955476, 0.519475, 0.396316, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_wbg41"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6vt5u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkye5"]
+bg_color = Color(0.955476, 0.519475, 0.396316, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -63,6 +63,15 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ccyms")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, -0.000536813, -5.83798e-05, 0.000358725, 0.579674, 0.814849, -0.0004036, -0.814849, 0.579674, 0, 3.26846, 0)
 
+[node name="Coin" type="Area3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -3.98068, 0.229238, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin"]
+shape = SubResource("BoxShape3D_wbg41")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Coin"]
+mesh = SubResource("BoxMesh_6vt5u")
+
 [node name="ProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 offset_left = 8.0
@@ -70,15 +79,6 @@ offset_top = 8.0
 offset_right = 143.0
 offset_bottom = 35.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_fkye5")
-
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -3.98068, 0.229238, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("BoxShape3D_wbg41")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
-mesh = SubResource("BoxMesh_6vt5u")
 
 [connection signal="body_shape_entered" from="sphere" to="sphere" method="_on_body_shape_entered"]
 [connection signal="area_entered" from="sphere/Area3D" to="sphere" method="_on_area_3d_area_entered"]
