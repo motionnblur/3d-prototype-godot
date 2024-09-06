@@ -7,17 +7,7 @@ var collided: bool = false
 func _process(delta: float) -> void:
 	if !collided:
 		return
-	#%ProgressBar.value += delta*3
-		
-	#if Input.is_action_pressed("KEY_W"):
-		#position -= global_basis.z * speed * delta
-	#elif Input.is_action_pressed("KEY_S"):
-		#position += global_basis.z * speed * delta
-	#elif Input.is_action_pressed("KEY_A"):
-		#position -= global_basis.x * speed * delta
-	#elif Input.is_action_pressed("KEY_D"):
-		#position += global_basis.x * speed * delta
-		
+
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 100
 	var from = %Camera3D.project_ray_origin(mouse_pos)
