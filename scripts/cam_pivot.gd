@@ -15,7 +15,9 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if !isRightClick: return
 	
-	rotate_x(-deltaMouse.y*delta*0.2)
+	if global_rotation.x < 0.6:
+		rotate_x(-deltaMouse.y*delta*0.2)
+		
 	rotate_y(-deltaMouse.x*delta*0.2)
 	
 	print(global_rotation)
