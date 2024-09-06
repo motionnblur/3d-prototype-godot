@@ -15,8 +15,7 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if !isRightClick: return
 	
-	var firstRot = global_rotation
+	rotate_x(-deltaMouse.y*delta*0.2)
+	rotate_y(-deltaMouse.x*delta*0.2)
 	
-	global_rotation.x = clamp(global_rotation.x, 0, 0.6)
-	
-	print(global_rotation)
+	global_rotation.x = clamp(global_rotation.x, -0.4, 0.5)
