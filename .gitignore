@@ -10,3 +10,8 @@
 *.blend
 *.mtl
 *.import
+*.wav
+*.mp3
+*.ogg
+*.mp4
+*.flac
