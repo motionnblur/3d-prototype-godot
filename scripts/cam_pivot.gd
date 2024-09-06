@@ -17,14 +17,14 @@ func _process(delta: float) -> void:
 	
 	var firstRot = global_rotation
 	
-	var rotateX = -deltaMouse.y*delta*0.02
+	var rotateX = -deltaMouse.x*delta*0.1
 	firstRot.x += rotateX
 	
-	var rotateY = -deltaMouse.x*delta*0.02
+	var rotateY = -deltaMouse.y*delta*0.1
 	firstRot.y += rotateY
 	
 	var clmpX = clamp(firstRot.x, 0, 0.6)
 	var clmpY = clamp(firstRot.y, 0, 0.6)
 	
-	rotate_x(clmpX)
-	rotate_y(clmpY)
+	#rotate_y(clmpX)
+	rotate_x(clmpY)
