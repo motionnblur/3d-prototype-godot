@@ -13,7 +13,7 @@ bg_color = Color(0.955476, 0.519475, 0.396316, 1)
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_oah0k")]
-speed = 1.8
+script = null
 
 [node name="Terrain" parent="." instance=ExtResource("2_5305b")]
 
