@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://animation_player.gd" id="1_o3gaq"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wbg41"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_5uwn1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6vt5u"]
 
@@ -93,7 +93,8 @@ _data = {
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -3.98068, 0.229238, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_wbg41")
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_5uwn1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_6vt5u")
