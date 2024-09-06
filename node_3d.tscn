@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg4qm1eumyu0f"]
+[gd_scene load_steps=6 format=3 uid="uid://bg4qm1eumyu0f"]
 
 [ext_resource type="PackedScene" uid="uid://swt4q57m2mye" path="res://player.tscn" id="1_oah0k"]
 [ext_resource type="PackedScene" uid="uid://jhxxbkwv63qe" path="res://terrain.tscn" id="2_5305b"]
 [ext_resource type="PackedScene" uid="uid://d11jf4p1rle2a" path="res://coin.tscn" id="2_nhbi2"]
+[ext_resource type="AudioStream" uid="uid://li81142tbio2" path="res://collect.wav" id="4_e8xjq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkye5"]
 bg_color = Color(0.955476, 0.519475, 0.396316, 1)
@@ -40,3 +41,7 @@ offset_top = 8.0
 offset_right = 143.0
 offset_bottom = 35.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_fkye5")
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_e8xjq")
