@@ -15,9 +15,16 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if !isRightClick: return
 	
-	var rotateX = -deltaMouse.y*delta*0.2
-	var rotateY = -deltaMouse.x*delta*0.2
-	var clmpX = clamp(global_rotation.x, 0, 0.6)
-	var clmpY = clamp(global_rotation.y, 0, 0.6)
+	var firstRot = global_rotation
 	
-	rotate(Vector3(clmpX, clmpY, 0))
+	var rotateX = -deltaMouse.y*delta*0.02
+	firstRot.x += rotateX
+	
+	var rotateY = -deltaMouse.x*delta*0.02
+	firstRot.y += rotateY
+	
+	var clmpX = clamp(firstRot.x, 0, 0.6)
+	var clmpY = clamp(firstRot.y, 0, 0.6)
+	
+	rotate_x(clmpX)
+	rotate_y(clmpY)
