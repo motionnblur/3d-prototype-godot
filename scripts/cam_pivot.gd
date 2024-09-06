@@ -17,3 +17,5 @@ func _process(delta: float) -> void:
 	
 	rotate_x(-deltaMouse.y*delta*0.2)
 	rotate_y(-deltaMouse.x*delta*0.2)
+	
+	print(global_rotation)
