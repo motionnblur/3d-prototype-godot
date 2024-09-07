@@ -3,8 +3,10 @@ extends RigidBody3D
 
 @export var speed: float
 var collided: bool = false
-var gotoPos: Vector3 = Vector3.ZERO
+var gotoPos = []
 var leftPressed: bool = false
+var currentPosIndis = 0;
+var lock1: bool = false;
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Left_Click"):
@@ -31,16 +33,24 @@ func _process(delta: float) -> void:
 			
 			var pos = raycast_result.position
 			pos.y = position.y
-			gotoPos = pos
 	
-	if gotoPos != Vector3.ZERO:
-		transform.origin = transform.origin.move_toward(gotoPos, delta*2)
+			gotoPos.append(pos)
+	
+	if currentPosIndis < gotoPos.size() && currentPosIndis != gotoPos.size():
+		if gotoPos[currentPosIndis] != Vector3.ZERO && gotoPos[currentPosIndis] != transform.origin:
+			transform.origin = transform.origin.move_toward(gotoPos[currentPosIndis], delta*2)
+		else:
+			if currentPosIndis <= gotoPos.size():
+				currentPosIndis += 1
 
 
+
+
+
+#########################################################################################
 func _on_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
 	collided = true
-
-
+	
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	area.queue_free()
 	%ProgressBar.value += 5
