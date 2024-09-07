@@ -60,6 +60,8 @@ transform = Transform3D(1, 0, 0, 0, 0.597821, 0.80163, 0, -0.80163, 0.597821, 0,
 script = ExtResource("1_f61e8")
 
 [node name="Cursor" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 2.289, 0, 2.507)
+visible = false
 mesh = SubResource("QuadMesh_ubi00")
 surface_material_override/0 = SubResource("ShaderMaterial_m7jb4")
