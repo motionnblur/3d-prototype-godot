@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg4qm1eumyu0f"]
+[gd_scene load_steps=9 format=3 uid="uid://bg4qm1eumyu0f"]
 
 [ext_resource type="Script" path="res://scripts/camera_3d.gd" id="1_f61e8"]
 [ext_resource type="PackedScene" uid="uid://swt4q57m2mye" path="res://scenes/player.tscn" id="1_oah0k"]
@@ -9,6 +9,8 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkye5"]
 bg_color = Color(0.955476, 0.519475, 0.396316, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ubi00"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -51,3 +53,7 @@ script = ExtResource("5_7l5nf")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.597821, 0.80163, 0, -0.80163, 0.597821, 0, 6.04066, 5.15514)
 script = ExtResource("1_f61e8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 2.28881, 0.0723253, 2.50731)
+mesh = SubResource("QuadMesh_ubi00")
