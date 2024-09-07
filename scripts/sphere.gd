@@ -3,6 +3,12 @@ extends RigidBody3D
 
 @export var speed: float
 var collided: bool = false
+var gotoPos: Vector3 = Vector3.ZERO
+var leftPressed: bool = false
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Left_Click"):
+		leftPressed = true
 		
 func _process(delta: float) -> void:
 	if !collided:
@@ -19,11 +25,16 @@ func _process(delta: float) -> void:
 	ray_query.collide_with_areas = true
 	var raycast_result = space.intersect_ray(ray_query)
 	
-	if raycast_result.size() > 0 and raycast_result.collider.name != "sphere":
-		var pos = raycast_result.position
-		pos.y = position.y
-		var dir = (pos - position).normalized()
-		position += dir*delta*speed
+	if leftPressed:
+		if raycast_result.size() > 0 and raycast_result.collider.name != "sphere":
+			leftPressed = false
+			
+			var pos = raycast_result.position
+			pos.y = position.y
+			gotoPos = pos
+	
+	if gotoPos != Vector3.ZERO:
+		transform.origin = transform.origin.move_toward(gotoPos, delta*2)
 
 
 func _on_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
