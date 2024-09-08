@@ -39,7 +39,7 @@ shader = SubResource("Shader_xr5id")
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_oah0k")]
-speed = 0.0
+script = null
 
 [node name="Terrain" parent="." instance=ExtResource("2_5305b")]
 unique_name_in_owner = true
