@@ -7,8 +7,10 @@ var gotoPos = []
 var leftPressed: bool = false
 var currentPosIndis = 0;
 var lock1: bool = false;
+var mouse_pos: Vector2
 
 func _input(event: InputEvent) -> void:
+	mouse_pos = event.position
 	if event.is_action_pressed("Left_Click"):
 		leftPressed = true
 		
@@ -16,7 +18,6 @@ func _process(delta: float) -> void:
 	if !collided:
 		return
 
-	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 100
 	var from = %Camera3D.project_ray_origin(mouse_pos)
 	var to = from + %Camera3D.project_ray_normal(mouse_pos) * ray_length
@@ -28,7 +29,7 @@ func _process(delta: float) -> void:
 	var raycast_result = space.intersect_ray(ray_query)
 	
 	if leftPressed:
-		if raycast_result.size() > 0 and raycast_result.collider.name != "sphere":
+		if raycast_result and raycast_result.collider.name != "sphere":
 			leftPressed = false
 			
 			var pos = raycast_result.position
@@ -36,8 +37,7 @@ func _process(delta: float) -> void:
 	
 			gotoPos.append(pos)
 			%Cursor.show()
-			var cPos = %Cursor.position
-			%Cursor.position = Vector3(pos.x, pos.y, pos.z)
+			%Cursor.position = Vector3(pos.x, 0.01, pos.z)
 	
 	if currentPosIndis < gotoPos.size() && currentPosIndis != gotoPos.size():
 		if gotoPos[currentPosIndis] != Vector3.ZERO && gotoPos[currentPosIndis] != transform.origin:
