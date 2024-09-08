@@ -1,20 +1,40 @@
-[gd_scene load_steps=10 format=3 uid="uid://bg4qm1eumyu0f"]
+[gd_scene load_steps=11 format=3 uid="uid://bg4qm1eumyu0f"]
 
+[ext_resource type="Script" path="res://scripts/camera_3d.gd" id="1_f61e8"]
 [ext_resource type="PackedScene" uid="uid://swt4q57m2mye" path="res://scenes/player.tscn" id="1_oah0k"]
 [ext_resource type="PackedScene" uid="uid://jhxxbkwv63qe" path="res://scenes/terrain.tscn" id="2_5305b"]
 [ext_resource type="PackedScene" uid="uid://d11jf4p1rle2a" path="res://scenes/coin.tscn" id="2_nhbi2"]
 [ext_resource type="AudioStream" uid="uid://li81142tbio2" path="res://assets/collect.wav" id="4_e8xjq"]
 [ext_resource type="Script" path="res://scripts/cam_pivot.gd" id="5_7l5nf"]
-[ext_resource type="Shader" path="res://scenes/node_3d.gdshader" id="7_45alu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkye5"]
 bg_color = Color(0.955476, 0.519475, 0.396316, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_ubi00"]
 
+[sub_resource type="Shader" id="Shader_xr5id"]
+code = "shader_type spatial;
+
+void vertex() {
+	float animation_offset = (cos(TIME * 4.5) + 1.1) * 0.2;
+
+    // Apply position offset
+    VERTEX = VERTEX + vec3(0.0, 0.0, animation_offset);
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the material.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m7jb4"]
 render_priority = 0
-shader = ExtResource("7_45alu")
+shader = SubResource("Shader_xr5id")
 
 [node name="Node3D" type="Node3D"]
 
@@ -55,7 +75,8 @@ script = ExtResource("5_7l5nf")
 
 [node name="Camera3D" type="Camera3D" parent="CamPivot"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6.041, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6.041, 6.46835)
+script = ExtResource("1_f61e8")
 
 [node name="Cursor" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
