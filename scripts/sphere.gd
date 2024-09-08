@@ -35,6 +35,9 @@ func _process(delta: float) -> void:
 			pos.y = position.y
 	
 			gotoPos.append(pos)
+			%Cursor.show()
+			var cPos = %Cursor.position
+			%Cursor.position = Vector3(pos.x, pos.y, pos.z)
 	
 	if currentPosIndis < gotoPos.size() && currentPosIndis != gotoPos.size():
 		if gotoPos[currentPosIndis] != Vector3.ZERO && gotoPos[currentPosIndis] != transform.origin:

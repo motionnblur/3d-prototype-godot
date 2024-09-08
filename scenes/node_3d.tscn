@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg4qm1eumyu0f"]
+[gd_scene load_steps=11 format=3 uid="uid://bg4qm1eumyu0f"]
 
 [ext_resource type="Script" path="res://scripts/camera_3d.gd" id="1_f61e8"]
 [ext_resource type="PackedScene" uid="uid://swt4q57m2mye" path="res://scenes/player.tscn" id="1_oah0k"]
@@ -6,9 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://d11jf4p1rle2a" path="res://scenes/coin.tscn" id="2_nhbi2"]
 [ext_resource type="AudioStream" uid="uid://li81142tbio2" path="res://assets/collect.wav" id="4_e8xjq"]
 [ext_resource type="Script" path="res://scripts/cam_pivot.gd" id="5_7l5nf"]
+[ext_resource type="Shader" path="res://scenes/node_3d.gdshader" id="7_45alu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkye5"]
 bg_color = Color(0.955476, 0.519475, 0.396316, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ubi00"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7jb4"]
+render_priority = 0
+shader = ExtResource("7_45alu")
 
 [node name="Node3D" type="Node3D"]
 
@@ -51,3 +58,10 @@ script = ExtResource("5_7l5nf")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.597821, 0.80163, 0, -0.80163, 0.597821, 0, 6.04066, 5.15514)
 script = ExtResource("1_f61e8")
+
+[node name="Cursor" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 2.289, 0, 2.507)
+visible = false
+mesh = SubResource("QuadMesh_ubi00")
+surface_material_override/0 = SubResource("ShaderMaterial_m7jb4")
