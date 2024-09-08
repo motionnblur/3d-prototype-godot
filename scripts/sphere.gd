@@ -2,9 +2,13 @@ extends RigidBody3D
 
 
 @export var speed: float
+
+var camera: Camera3D
+var cursor: MeshInstance3D
+
 var collided: bool = false
 var gotoPos = []
-var leftPressed: bool = false
+var leftClickPressed: bool = false
 var currentPosIndis = 0;
 var lock1: bool = false;
 var mouse_pos: Vector2
@@ -15,40 +19,23 @@ var camFirstPos: Vector3 = Vector3.ZERO
 
 
 func _ready() -> void:
-	camFirstPos = %Camera3D.transform.origin
+	camera = %Camera3D
+	cursor = %Cursor
+	camFirstPos = camera.transform.origin
 
 func _input(event: InputEvent) -> void:
 	mouse_pos = event.position
 	if event.is_action_pressed("Left_Click"):
-		leftPressed = true
-	elif event.is_action_pressed("Wheel_Up"):
-		zoomable = true
+		leftClickPressed = true
 		
-		zoomAmount = 0.6
-		var zoomDirection: Vector3 = (%Terrain.transform.origin - %Camera3D.transform.origin).normalized()
-		
-		var dist = %Camera3D.transform.origin.distance_to(%Terrain.transform.origin)
-		if dist > 5:
-			_gotoPos = %Camera3D.transform.origin + zoomDirection * zoomAmount
-		#_gotoPos = clamp(_gotoPos, %Camera3D.transform.origin + zoomDirection * 3.5, %Camera3D.transform.origin + zoomDirection * -3.5)
-	elif event.is_action_pressed("Wheel_Down"):
-		zoomable = true
-		
-		zoomAmount = -0.6
-		var zoomDirection: Vector3 = (%Terrain.transform.origin - %Camera3D.transform.origin).normalized()
-		
-		var dist = %Camera3D.transform.origin.distance_to(%Terrain.transform.origin)
-		if dist < 10:
-			_gotoPos = %Camera3D.transform.origin + zoomDirection * zoomAmount
-		#_gotoPos = clamp(_gotoPos, %Camera3D.transform.origin + zoomDirection * 3.5, %Camera3D.transform.origin + zoomDirection * -1.5)
 		
 func _process(delta: float) -> void:
 	if !collided:
 		return
 
 	var ray_length = 100
-	var from = %Camera3D.project_ray_origin(mouse_pos)
-	var to = from + %Camera3D.project_ray_normal(mouse_pos) * ray_length
+	var from = camera.project_ray_origin(mouse_pos)
+	var to = from + camera.project_ray_normal(mouse_pos) * ray_length
 	var space = get_world_3d().direct_space_state
 	var ray_query = PhysicsRayQueryParameters3D.new()
 	ray_query.from = from
@@ -56,16 +43,16 @@ func _process(delta: float) -> void:
 	ray_query.collide_with_areas = true
 	var raycast_result = space.intersect_ray(ray_query)
 	
-	if leftPressed:
+	if leftClickPressed:
 		if raycast_result and raycast_result.collider.name != "sphere":
-			leftPressed = false
+			leftClickPressed = false
 			
 			var pos = raycast_result.position
 			pos.y = position.y
 	
 			gotoPos.append(pos)
-			%Cursor.show()
-			%Cursor.position = Vector3(pos.x, 0.01, pos.z)
+			cursor.show()
+			cursor.position = Vector3(pos.x, 0.01, pos.z)
 	
 	if currentPosIndis < gotoPos.size() && currentPosIndis != gotoPos.size():
 		if gotoPos[currentPosIndis] != Vector3.ZERO && gotoPos[currentPosIndis] != transform.origin:
@@ -77,13 +64,6 @@ func _process(delta: float) -> void:
 					gotoPos.clear()
 					currentPosIndis = 0
 	
-	if zoomable:
-		if %Camera3D.transform.origin != _gotoPos:
-			%Camera3D.transform.origin = %Camera3D.transform.origin.move_toward(_gotoPos, delta * 2)
-		else:
-			zoomable = false
-
-
 
 
 #########################################################################################

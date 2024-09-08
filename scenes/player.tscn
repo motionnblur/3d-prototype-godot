@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://swt4q57m2mye"]
+[gd_scene load_steps=6 format=3 uid="uid://swt4q57m2mye"]
 
 [ext_resource type="Script" path="res://scripts/sphere.gd" id="1_gy4jb"]
+[ext_resource type="Script" path="res://scenes/zoom.gd" id="2_vus1f"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ydlkx"]
 
@@ -25,6 +26,11 @@ mesh = SubResource("SphereMesh_7oyq0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_mlhbm")
+
+[node name="Scripts" type="Node" parent="."]
+
+[node name="Zoom" type="Node" parent="Scripts"]
+script = ExtResource("2_vus1f")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
