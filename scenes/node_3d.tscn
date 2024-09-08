@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://bg4qm1eumyu0f"]
+[gd_scene load_steps=10 format=3 uid="uid://bg4qm1eumyu0f"]
 
-[ext_resource type="Script" path="res://scripts/camera_3d.gd" id="1_f61e8"]
 [ext_resource type="PackedScene" uid="uid://swt4q57m2mye" path="res://scenes/player.tscn" id="1_oah0k"]
 [ext_resource type="PackedScene" uid="uid://jhxxbkwv63qe" path="res://scenes/terrain.tscn" id="2_5305b"]
 [ext_resource type="PackedScene" uid="uid://d11jf4p1rle2a" path="res://scenes/coin.tscn" id="2_nhbi2"]
@@ -56,8 +55,7 @@ script = ExtResource("5_7l5nf")
 
 [node name="Camera3D" type="Camera3D" parent="CamPivot"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.597821, 0.80163, 0, -0.80163, 0.597821, 0, 6.04066, 5.15514)
-script = ExtResource("1_f61e8")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6.041, 0)
 
 [node name="Cursor" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
