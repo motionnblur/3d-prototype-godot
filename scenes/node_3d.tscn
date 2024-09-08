@@ -42,6 +42,7 @@ shader = SubResource("Shader_xr5id")
 speed = 0.0
 
 [node name="Terrain" parent="." instance=ExtResource("2_5305b")]
+unique_name_in_owner = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, -0.000536813, -5.83798e-05, 0.000358725, 0.579674, 0.814849, -0.0004036, -0.814849, 0.579674, 0, 3.26846, 0)
