@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bg4qm1eumyu0f"]
+[gd_scene load_steps=14 format=3 uid="uid://bg4qm1eumyu0f"]
 
 [ext_resource type="PackedScene" uid="uid://swt4q57m2mye" path="res://scenes/player.tscn" id="1_2nmnm"]
 [ext_resource type="PackedScene" uid="uid://jhxxbkwv63qe" path="res://scenes/terrain.tscn" id="2_ogd1d"]
@@ -6,10 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://li81142tbio2" path="res://assets/collect.wav" id="4_ygqq3"]
 [ext_resource type="Script" path="res://scripts/cam_pivot.gd" id="5_17ssu"]
 [ext_resource type="Script" path="res://scripts/zoom.gd" id="7_4fdbb"]
-[ext_resource type="Script" path="res://scenes/lookat.gd" id="7_7qekl"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkye5"]
-bg_color = Color(0.955476, 0.519475, 0.396316, 1)
+[ext_resource type="Script" path="res://scripts/lookat.gd" id="7_7qekl"]
+[ext_resource type="Script" path="res://scripts/level_manager.gd" id="8_g4dvm"]
 
 [sub_resource type="Environment" id="Environment_swv06"]
 background_mode = 1
@@ -41,6 +39,9 @@ void fragment() {
 render_priority = 0
 shader = SubResource("Shader_xr5id")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkye5"]
+bg_color = Color(0.955476, 0.519475, 0.396316, 1)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_2nmnm")]
@@ -62,14 +63,6 @@ transform = Transform3D(0.254251, 0, -0.159238, 0, 0.3, 0, 0.159238, 0, 0.254251
 
 [node name="Coin4" parent="." instance=ExtResource("3_fpug5")]
 transform = Transform3D(0.204143, 0, 0.219831, 0, 0.3, 0, -0.219831, 0, 0.204143, 0.162212, 0.229238, -3.19294)
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-unique_name_in_owner = true
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 143.0
-offset_bottom = 35.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_fkye5")
 
 [node name="Audio" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
@@ -97,3 +90,36 @@ transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 
 visible = false
 mesh = SubResource("QuadMesh_ubi00")
 surface_material_override/0 = SubResource("ShaderMaterial_m7jb4")
+
+[node name="LevelManager" type="Node" parent="."]
+script = ExtResource("8_g4dvm")
+max_step = 3
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 143.0
+offset_bottom = 35.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_fkye5")
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -45.0
+offset_bottom = 42.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "4"
+horizontal_alignment = 1

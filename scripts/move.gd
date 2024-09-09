@@ -1,5 +1,7 @@
 extends Node
 
+var level_manager
+
 var camera: Camera3D
 var terrain: StaticBody3D
 var mouse_pos: Vector2
@@ -13,6 +15,7 @@ var drawStart: bool = false
 var firstPlayerPos: Vector3
 
 func _ready() -> void:
+	level_manager = get_node("/root/Node3D/LevelManager")
 	camera = get_node("/root/Node3D/CamPivot/Camera3D")
 	terrain = get_node("/root/Node3D/Terrain")
 	cursor = get_node("/root/Node3D/Cursor")
@@ -47,6 +50,7 @@ func _process(delta: float) -> void:
 			drawStart = true
 			cursor.show()
 			cursor.position = Vector3(pos.x, 0.01, pos.z)
+			level_manager.addStep()
 	
 	if currentPosIndis < gotoPos.size() && currentPosIndis != gotoPos.size():
 		if gotoPos[currentPosIndis] != Vector3.ZERO && gotoPos[currentPosIndis] != player.transform.origin:
