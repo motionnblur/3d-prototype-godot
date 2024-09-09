@@ -5,6 +5,7 @@ extends Node
 var current_step: int = 0
 var label: Label
 var label2: Label
+var is_end: bool = false
 
 func _ready() -> void:
 	current_step = max_step
@@ -19,7 +20,11 @@ func addStep() -> void:
 	if current_step > 0:
 		label.text = str(current_step)
 	else:
-		label.text = "0"
+		label.text = "0"	
+		is_end = true
+		
+func end() -> void:
+	if is_end:
 		await Global.delay(0.7)
 		label2.show()
 		await Global.delay(1.5)

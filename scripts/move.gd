@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 	ray_query.collide_with_areas = true
 	var raycast_result = space.intersect_ray(ray_query)
 	
-	if leftClickPressed:
+	if leftClickPressed && level_manager.current_step > 0:
 		if raycast_result and raycast_result.collider.name != "sphere":
 			leftClickPressed = false
 			
@@ -61,6 +61,7 @@ func _process(delta: float) -> void:
 				if currentPosIndis == gotoPos.size():
 					gotoPos.clear()
 					currentPosIndis = 0
+					level_manager.end()
 
 	if drawStart && gotoPos.size() > 0:
 		for n in range(0, gotoPos.size()-1):
