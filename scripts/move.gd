@@ -9,6 +9,8 @@ var currentPosIndis = 0;
 
 var gotoPos = []
 var leftClickPressed: bool = false
+var drawStart: bool = false
+var firstPlayerPos: Vector3
 
 func _ready() -> void:
 	camera = get_node("/root/Node3D/CamPivot/Camera3D")
@@ -39,7 +41,10 @@ func _process(delta: float) -> void:
 			var pos = raycast_result.position
 			pos.y = player.position.y
 	
+			if gotoPos.size() == 0:
+				gotoPos.append(player.transform.origin) 
 			gotoPos.append(pos)
+			drawStart = true
 			cursor.show()
 			cursor.position = Vector3(pos.x, 0.01, pos.z)
 	
@@ -52,3 +57,9 @@ func _process(delta: float) -> void:
 				if currentPosIndis == gotoPos.size():
 					gotoPos.clear()
 					currentPosIndis = 0
+
+	if drawStart && gotoPos.size() > 0:
+		for n in range(0, gotoPos.size()-1):
+			var line_begin2 = Vector3(gotoPos[n].x, 0.1, gotoPos[n].z)
+			var line_end2 = Vector3(gotoPos[n+1].x, 0.1, gotoPos[n+1].z)
+			DebugDraw3D.draw_line(line_begin2, line_end2)
