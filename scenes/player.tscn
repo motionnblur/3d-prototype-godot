@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://swt4q57m2mye"]
+[gd_scene load_steps=7 format=3 uid="uid://swt4q57m2mye"]
 
 [ext_resource type="Script" path="res://scripts/score.gd" id="1_gy4jb"]
-[ext_resource type="Script" path="res://scripts/zoom.gd" id="2_vus1f"]
 [ext_resource type="Script" path="res://scripts/move.gd" id="3_rjhw4"]
 [ext_resource type="Script" path="res://scripts/collision.gd" id="4_uwt1s"]
 
@@ -28,9 +27,6 @@ mesh = SubResource("SphereMesh_7oyq0")
 shape = SubResource("BoxShape3D_mlhbm")
 
 [node name="Scripts" type="Node" parent="."]
-
-[node name="Zoom" type="Node" parent="Scripts"]
-script = ExtResource("2_vus1f")
 
 [node name="Move" type="Node" parent="Scripts"]
 script = ExtResource("3_rjhw4")
