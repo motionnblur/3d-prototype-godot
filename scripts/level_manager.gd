@@ -4,12 +4,14 @@ extends Node
 
 var current_step: int = 0
 var label: Label
+var label2: Label
 
 func _ready() -> void:
 	current_step = max_step
 	
 	label = get_node("/root/Node3D/UI/Label")
 	label.text = str(max_step)
+	label2 = get_node("/root/Node3D/UI/Label2")
 
 func addStep() -> void:
 	current_step -= 1
@@ -19,4 +21,6 @@ func addStep() -> void:
 	else:
 		label.text = "0"
 		await Global.delay(0.7)
-		print("Game End")
+		label2.show()
+		await Global.delay(1.5)
+		get_tree().reload_current_scene()
