@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://swt4q57m2mye"]
+[gd_scene load_steps=6 format=3 uid="uid://swt4q57m2mye"]
 
 [ext_resource type="Script" path="res://scripts/score.gd" id="1_gy4jb"]
 [ext_resource type="Script" path="res://scripts/move.gd" id="3_rjhw4"]
-[ext_resource type="Script" path="res://scripts/collision.gd" id="4_uwt1s"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ydlkx"]
 
@@ -33,8 +32,5 @@ script = ExtResource("3_rjhw4")
 
 [node name="Score" type="Node" parent="Scripts"]
 script = ExtResource("1_gy4jb")
-
-[node name="Collision" type="Node" parent="Scripts"]
-script = ExtResource("4_uwt1s")
 
 [connection signal="area_entered" from="Area3D" to="Scripts/Score" method="_on_area_3d_area_entered"]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://d11jf4p1rle2a"]
+[gd_scene load_steps=9 format=3 uid="uid://d11jf4p1rle2a"]
 
+[ext_resource type="Script" path="res://scripts/coin.gd" id="1_6ys4u"]
 [ext_resource type="Script" path="res://scripts/animation_player.gd" id="1_o3gaq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5uwn1"]
@@ -91,6 +92,7 @@ _data = {
 
 [node name="Coin" type="Area3D"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -3.98068, 0.229238, 0)
+script = ExtResource("1_6ys4u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)

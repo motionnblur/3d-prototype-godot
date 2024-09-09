@@ -93,7 +93,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_m7jb4")
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("8_g4dvm")
-max_step = 3
+max_step = 4
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
