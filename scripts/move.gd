@@ -5,7 +5,7 @@ var level_manager
 var camera: Camera3D
 var terrain: StaticBody3D
 var mouse_pos: Vector2
-var player: RigidBody3D
+var player: Node3D
 var cursor: MeshInstance3D
 var currentPosIndis = 0;
 
