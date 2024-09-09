@@ -4429,6 +4429,7 @@ bg_color = Color(0.955476, 0.519475, 0.396316, 1)
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("9_w2s3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
 
 [node name="AnimationPlayer" parent="Player" index="1"]
 libraries = {

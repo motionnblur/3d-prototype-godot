@@ -58,6 +58,8 @@ func _process(delta: float) -> void:
 		else:
 			if currentPosIndis <= gotoPos.size():
 				currentPosIndis += 1
+				if currentPosIndis < gotoPos.size():
+					player.look_at(gotoPos[currentPosIndis], -Vector3.UP)
 				if currentPosIndis == gotoPos.size():
 					gotoPos.clear()
 					currentPosIndis = 0
