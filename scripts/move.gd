@@ -7,6 +7,7 @@ var terrain: StaticBody3D
 var mouse_pos: Vector2
 var player: Node3D
 var cursor: MeshInstance3D
+var anim_player: AnimationPlayer
 var currentPosIndis = 0;
 
 var gotoPos = []
@@ -20,6 +21,7 @@ func _ready() -> void:
 	terrain = get_node("/root/Node3D/Terrain")
 	cursor = get_node("/root/Node3D/Cursor")
 	player = get_parent().get_parent()
+	anim_player = get_parent().get_parent().get_node("AnimationPlayer")
 	
 func _input(event: InputEvent) -> void:
 	mouse_pos = event.position
@@ -51,6 +53,7 @@ func _process(delta: float) -> void:
 			cursor.show()
 			cursor.position = Vector3(pos.x, 0.01, pos.z)
 			level_manager.addStep()
+			anim_player.play("CharacterArmature|Run")
 	
 	if currentPosIndis < gotoPos.size() && currentPosIndis != gotoPos.size():
 		if gotoPos[currentPosIndis] != Vector3.ZERO && gotoPos[currentPosIndis] != player.transform.origin:
@@ -61,6 +64,7 @@ func _process(delta: float) -> void:
 				if currentPosIndis < gotoPos.size():
 					player.look_at(gotoPos[currentPosIndis], -Vector3.UP)
 				if currentPosIndis == gotoPos.size():
+					anim_player.play("CharacterArmature|Idle")
 					gotoPos.clear()
 					currentPosIndis = 0
 					level_manager.end()
