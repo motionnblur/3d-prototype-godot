@@ -2,6 +2,7 @@ extends Node
 
 @export var max_step: int
 
+var move: Node
 var current_step: int = 0
 var label: Label
 var label2: Label
@@ -16,6 +17,8 @@ func _ready() -> void:
 	label = get_node("/root/Node3D/UI/Label")
 	label.text = str(max_step)
 	label2 = get_node("/root/Node3D/UI/Label2")
+	
+	move = get_node("/root/Node3D/Player/Scripts/Move")
 
 func addStep() -> void:
 	current_step -= 1
@@ -31,6 +34,7 @@ func increaseGoalCount() -> void:
 		
 func end() -> void:
 	if goal_counter == goals:
+		move.playDuckAnim()
 		label2.text = "Win"
 		await Global.delay(0.5)
 		label2.show()

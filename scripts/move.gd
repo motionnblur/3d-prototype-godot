@@ -74,3 +74,6 @@ func _process(delta: float) -> void:
 			var line_begin2 = Vector3(gotoPos[n].x, 0.1, gotoPos[n].z)
 			var line_end2 = Vector3(gotoPos[n+1].x, 0.1, gotoPos[n+1].z)
 			DebugDraw3D.draw_line(line_begin2, line_end2)
+			
+func playDuckAnim() -> void:
+	anim_player.play("CharacterArmature|Duck")
