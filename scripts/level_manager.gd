@@ -31,9 +31,11 @@ func increaseGoalCount() -> void:
 		
 func end() -> void:
 	if goal_counter == goals:
-		print("win")
-	elif is_end:
-		await Global.delay(0.7)
+		label2.text = "Win"
+		await Global.delay(0.5)
 		label2.show()
-		await Global.delay(1.5)
+	elif is_end:
+		await Global.delay(0.5)
+		label2.show()
+		await Global.delay(1.2)
 		get_tree().reload_current_scene()
