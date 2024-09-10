@@ -1,7 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://bg4qm1eumyu0f"]
+[gd_scene load_steps=37 format=3 uid="uid://bg4qm1eumyu0f"]
 
 [ext_resource type="PackedScene" uid="uid://jhxxbkwv63qe" path="res://prefabs/terrain.tscn" id="2_ogd1d"]
 [ext_resource type="PackedScene" uid="uid://d11jf4p1rle2a" path="res://prefabs/coin.tscn" id="3_fpug5"]
+[ext_resource type="Script" path="res://scripts/anim.gd" id="4_qlyk1"]
 [ext_resource type="AudioStream" uid="uid://li81142tbio2" path="res://assets/collect.wav" id="4_ygqq3"]
 [ext_resource type="Script" path="res://scripts/cam_pivot.gd" id="5_17ssu"]
 [ext_resource type="Script" path="res://scripts/zoom.gd" id="7_4fdbb"]
@@ -4433,10 +4434,8 @@ bg_color = Color(0.955476, 0.519475, 0.396316, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Player/CharacterArmature" index="0"]
-bones/8/rotation = Quaternion(-0.0849531, -0.000274479, 2.3339e-05, 0.996385)
 bones/18/rotation = Quaternion(-0.526786, -0.503609, -0.474158, 0.494014)
 bones/20/rotation = Quaternion(0.0125379, 0.0181952, -0.00654309, 0.999734)
-bones/23/rotation = Quaternion(-0.526786, 0.503609, 0.474157, 0.494014)
 bones/24/rotation = Quaternion(-0.0172463, -0.258784, 0.229903, 0.938018)
 bones/25/rotation = Quaternion(0.0125379, -0.0181952, 0.00654307, 0.999734)
 
@@ -4458,6 +4457,9 @@ script = ExtResource("10_wn524")
 
 [node name="Score" type="Node" parent="Player/Scripts"]
 script = ExtResource("11_t3hug")
+
+[node name="Anim" type="Node" parent="Player/Scripts"]
+script = ExtResource("4_qlyk1")
 
 [node name="Terrain" parent="." instance=ExtResource("2_ogd1d")]
 unique_name_in_owner = true
@@ -4556,5 +4558,9 @@ text = "Game End"
 horizontal_alignment = 1
 
 [connection signal="area_entered" from="Player/Area3D" to="Player/Scripts/Score" method="_on_area_3d_area_entered"]
+[connection signal="idle" from="Player/Scripts/Move" to="Player/Scripts/Anim" method="_on_move_idle"]
+[connection signal="run" from="Player/Scripts/Move" to="Player/Scripts/Anim" method="_on_move_run"]
+[connection signal="lose" from="LevelManager" to="Player/Scripts/Anim" method="_on_level_manager_lose"]
+[connection signal="win" from="LevelManager" to="Player/Scripts/Anim" method="_on_level_manager_win"]
 
 [editable path="Player"]

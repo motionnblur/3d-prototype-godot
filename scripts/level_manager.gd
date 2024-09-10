@@ -2,6 +2,9 @@ extends Node
 
 @export var max_step: int
 
+signal win
+signal lose
+
 var move: Node
 var current_step: int = 0
 var label: Label
@@ -34,11 +37,12 @@ func increaseGoalCount() -> void:
 		
 func end() -> void:
 	if goal_counter == goals:
-		move.playDuckAnim()
+		win.emit()
 		label2.text = "Win"
 		await Global.delay(0.5)
 		label2.show()
 	elif is_end:
+		lose.emit()
 		await Global.delay(0.5)
 		label2.show()
 		await Global.delay(1.2)

@@ -1,5 +1,8 @@
 extends Node
 
+signal idle
+signal run
+
 var level_manager
 
 var camera: Camera3D
@@ -53,7 +56,7 @@ func _process(delta: float) -> void:
 			cursor.show()
 			cursor.position = Vector3(pos.x, 0.01, pos.z)
 			level_manager.addStep()
-			anim_player.play("CharacterArmature|Run")
+			run.emit()
 	
 	if currentPosIndis < gotoPos.size() && currentPosIndis != gotoPos.size():
 		if gotoPos[currentPosIndis] != Vector3.ZERO && gotoPos[currentPosIndis] != player.transform.origin:
@@ -64,7 +67,7 @@ func _process(delta: float) -> void:
 				if currentPosIndis < gotoPos.size():
 					player.look_at(gotoPos[currentPosIndis], -Vector3.UP)
 				if currentPosIndis == gotoPos.size():
-					anim_player.play("CharacterArmature|Idle")
+					idle.emit()
 					gotoPos.clear()
 					currentPosIndis = 0
 					level_manager.end()
@@ -75,5 +78,3 @@ func _process(delta: float) -> void:
 			var line_end2 = Vector3(gotoPos[n+1].x, 0.1, gotoPos[n+1].z)
 			DebugDraw3D.draw_line(line_begin2, line_end2)
 			
-func playDuckAnim() -> void:
-	anim_player.play("CharacterArmature|Duck")
