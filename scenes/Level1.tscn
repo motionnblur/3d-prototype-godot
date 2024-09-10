@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bg4qm1eumyu0f"]
+[gd_scene load_steps=38 format=3 uid="uid://bg4qm1eumyu0f"]
 
 [ext_resource type="PackedScene" uid="uid://jhxxbkwv63qe" path="res://prefabs/terrain.tscn" id="2_ogd1d"]
 [ext_resource type="PackedScene" uid="uid://d11jf4p1rle2a" path="res://prefabs/coin.tscn" id="3_fpug5"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/player/score.gd" id="11_t3hug"]
 [ext_resource type="Script" path="res://scenes/progress_bar.gd" id="12_n7yjy"]
 [ext_resource type="PackedScene" uid="uid://wt08fetq3ssl" path="res://prefabs/arrow3d.tscn" id="13_criol"]
+[ext_resource type="Shader" path="res://shaders/node_3d.gdshader" id="14_wgeql"]
 
 [sub_resource type="Animation" id="Animation_6qurb"]
 resource_name = "CharacterArmature|Death"
@@ -4401,34 +4402,12 @@ size = Vector3(0.923828, 1.12341, 0.645996)
 background_mode = 1
 background_color = Color(0.45827, 0.687386, 0.945693, 1)
 
-[sub_resource type="QuadMesh" id="QuadMesh_ubi00"]
-
-[sub_resource type="Shader" id="Shader_xr5id"]
-code = "shader_type spatial;
-
-void vertex() {
-	float animation_offset = (cos(TIME * 4.5) + 1.1) * 0.2;
-
-    // Apply position offset
-    VERTEX = VERTEX + vec3(0.0, 0.0, animation_offset);
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the material.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7jb4"]
-render_priority = 0
-shader = SubResource("Shader_xr5id")
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkye5"]
 bg_color = Color(0.955476, 0.519475, 0.396316, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlgv5"]
+render_priority = 0
+shader = ExtResource("14_wgeql")
 
 [node name="Node3D" type="Node3D"]
 
@@ -4436,14 +4415,12 @@ bg_color = Color(0.955476, 0.519475, 0.396316, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Player/CharacterArmature" index="0"]
-bones/1/position = Vector3(0.00218894, 9.86515e-05, -0.000180221)
 bones/1/rotation = Quaternion(7.85402e-06, 0.702952, 0.711237, 7.76252e-06)
 bones/3/position = Vector3(8.61194e-06, 0.0028885, 0.000619561)
 bones/3/rotation = Quaternion(-4.54747e-15, 1.19209e-07, 1.6263e-21, 1)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(-5.91935e-06, -0.000924994, -0.000727288)
 bones/4/rotation = Quaternion(-0.0507688, -2.6733e-07, -2.27517e-08, 0.99871)
-bones/4/scale = Vector3(1, 1, 1)
 bones/5/position = Vector3(-7.16334e-14, 0.00125735, -9.71869e-11)
 bones/5/rotation = Quaternion(0.0908929, 4.36223e-07, 5.61949e-08, 0.995861)
 bones/5/scale = Vector3(1, 1, 1)
@@ -4468,7 +4445,6 @@ bones/11/scale = Vector3(1, 1, 1)
 bones/13/position = Vector3(-0.00183265, 0.00278276, -0.000525227)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/position = Vector3(-5.49616e-10, 0.0013624, 4.13568e-11)
-bones/14/rotation = Quaternion(-0.16958, 0.00348856, 0.0161858, 0.985377)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/position = Vector3(-2.22418e-10, 0.00277843, 3.25963e-10)
 bones/15/rotation = Quaternion(-0.454136, 0.0989109, -0.191826, 0.864395)
@@ -4483,7 +4459,6 @@ bones/19/position = Vector3(-4.56476e-12, 0.00211308, 1.36103e-10)
 bones/19/rotation = Quaternion(-0.0134981, 0.0323297, -0.0358932, 0.998741)
 bones/19/scale = Vector3(1, 1, 1)
 bones/20/position = Vector3(2.06499e-11, 0.00170139, -1.57779e-10)
-bones/20/rotation = Quaternion(0.0125379, 0.0181952, -0.00654308, 0.999734)
 bones/20/scale = Vector3(1, 1, 1)
 bones/22/position = Vector3(-0.000499304, 0.00056463, 6.09718e-05)
 bones/22/rotation = Quaternion(-0.0246864, 0.0110934, 0.409758, 0.911793)
@@ -4493,9 +4468,7 @@ bones/23/rotation = Quaternion(-0.272488, 0.675926, 0.228487, 0.645498)
 bones/23/scale = Vector3(1, 1, 1)
 bones/24/position = Vector3(-2.66896e-11, 0.00211308, 7.95698e-12)
 bones/24/rotation = Quaternion(-0.0134981, -0.0323297, 0.0358932, 0.998741)
-bones/24/scale = Vector3(1, 1, 1)
 bones/25/position = Vector3(2.45138e-11, 0.00170139, -1.52802e-10)
-bones/25/rotation = Quaternion(0.0125379, -0.0181952, 0.00654308, 0.999734)
 bones/25/scale = Vector3(1, 1, 1)
 bones/27/position = Vector3(0.00213936, -0.000725912, -0.000766013)
 bones/27/rotation = Quaternion(0.991292, 0.0189264, -0.000208593, 0.130314)
@@ -4509,12 +4482,9 @@ bones/30/scale = Vector3(1, 1, 1)
 bones/31/position = Vector3(2.46932e-10, 0.000949189, 6.72288e-11)
 bones/31/rotation = Quaternion(0.247231, -0.00245714, -0.0187672, 0.968772)
 bones/31/scale = Vector3(1, 1, 1)
-bones/33/position = Vector3(0.00217522, 0.000994089, 0.00385259)
 bones/33/rotation = Quaternion(-4.54747e-15, 1.19209e-07, -1.26218e-27, 1)
 bones/33/scale = Vector3(1, 1, 1)
-bones/35/position = Vector3(-0.00217845, 9.86515e-05, -0.000180223)
 bones/35/rotation = Quaternion(-7.85402e-06, 0.702952, 0.711237, -7.76252e-06)
-bones/37/position = Vector3(-0.00216473, 0.000994089, 0.00385259)
 bones/37/rotation = Quaternion(-4.54749e-15, -5.96046e-07, 5.96312e-21, 1)
 bones/37/scale = Vector3(1, 1, 1)
 
@@ -4578,13 +4548,6 @@ script = ExtResource("7_7qekl")
 [node name="Zoom" type="Node" parent="CamPivot/Camera3D/Scripts"]
 script = ExtResource("7_4fdbb")
 
-[node name="Cursor" type="MeshInstance3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 2.289, 0, 2.507)
-visible = false
-mesh = SubResource("QuadMesh_ubi00")
-surface_material_override/0 = SubResource("ShaderMaterial_m7jb4")
-
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("8_g4dvm")
 max_step = 4
@@ -4637,8 +4600,11 @@ theme_override_font_sizes/font_size = 75
 text = "Game End"
 horizontal_alignment = 1
 
-[node name="3D RightArrow" parent="." instance=ExtResource("13_criol")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.62562, 0.395843, -2.41278)
+[node name="Cursor" parent="." instance=ExtResource("13_criol")]
+unique_name_in_owner = true
+
+[node name="Arrow" parent="Cursor" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_qlgv5")
 
 [connection signal="area_entered" from="Player/Area3D" to="Player/Scripts/Score" method="_on_area_3d_area_entered"]
 [connection signal="idle" from="Player/Scripts/Move" to="Player/Scripts/Anim" method="_on_move_idle"]
@@ -4648,3 +4614,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.62562, 0.395843, -2.41278)
 [connection signal="win" from="LevelManager" to="Player/Scripts/Anim" method="_on_level_manager_win"]
 
 [editable path="Player"]
+[editable path="Cursor"]

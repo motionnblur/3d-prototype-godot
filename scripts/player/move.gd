@@ -9,7 +9,7 @@ var camera: Camera3D
 var terrain: StaticBody3D
 var mouse_pos: Vector2
 var player: Node3D
-var cursor: MeshInstance3D
+var cursor: Node3D
 var anim_player: AnimationPlayer
 var currentPosIndis = 0;
 

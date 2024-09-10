@@ -1,10 +1,9 @@
 shader_type spatial;
 
 void vertex() {
-	float animation_offset = (cos(TIME * 4.5) + 1.1) * 0.2;
-
-    // Apply position offset
-    VERTEX = VERTEX + vec3(0.0, 0.0, animation_offset);
+	float animation_offset = (cos(TIME * 4.5)) * 0.002 - 0.005;
+	
+    VERTEX = VERTEX + vec3(animation_offset, 0.0, 0.0);
 }
 
 void fragment() {
