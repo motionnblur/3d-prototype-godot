@@ -2,15 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://jhxxbkwv63qe" path="res://prefabs/terrain.tscn" id="2_ogd1d"]
 [ext_resource type="PackedScene" uid="uid://d11jf4p1rle2a" path="res://prefabs/coin.tscn" id="3_fpug5"]
-[ext_resource type="Script" path="res://scripts/anim.gd" id="4_qlyk1"]
+[ext_resource type="Script" path="res://scripts/player/anim.gd" id="4_qlyk1"]
 [ext_resource type="AudioStream" uid="uid://li81142tbio2" path="res://assets/collect.wav" id="4_ygqq3"]
-[ext_resource type="Script" path="res://scripts/cam_pivot.gd" id="5_17ssu"]
-[ext_resource type="Script" path="res://scripts/zoom.gd" id="7_4fdbb"]
-[ext_resource type="Script" path="res://scripts/lookat.gd" id="7_7qekl"]
-[ext_resource type="Script" path="res://scripts/level_manager.gd" id="8_g4dvm"]
+[ext_resource type="Script" path="res://scripts/camera/cam_pivot.gd" id="5_17ssu"]
+[ext_resource type="Script" path="res://scripts/camera/zoom.gd" id="7_4fdbb"]
+[ext_resource type="Script" path="res://scripts/camera/lookat.gd" id="7_7qekl"]
+[ext_resource type="Script" path="res://scripts/managers/level_manager.gd" id="8_g4dvm"]
 [ext_resource type="PackedScene" uid="uid://bg1aq8kydikjh" path="res://prefabs/character.tscn" id="9_w2s3n"]
-[ext_resource type="Script" path="res://scripts/move.gd" id="10_wn524"]
-[ext_resource type="Script" path="res://scripts/score.gd" id="11_t3hug"]
+[ext_resource type="Script" path="res://scripts/player/move.gd" id="10_wn524"]
+[ext_resource type="Script" path="res://scripts/player/score.gd" id="11_t3hug"]
 
 [sub_resource type="Animation" id="Animation_6qurb"]
 resource_name = "CharacterArmature|Death"
