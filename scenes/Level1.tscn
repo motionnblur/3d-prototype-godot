@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bg4qm1eumyu0f"]
+[gd_scene load_steps=38 format=3 uid="uid://bg4qm1eumyu0f"]
 
 [ext_resource type="PackedScene" uid="uid://jhxxbkwv63qe" path="res://prefabs/terrain.tscn" id="2_ogd1d"]
 [ext_resource type="PackedScene" uid="uid://d11jf4p1rle2a" path="res://prefabs/coin.tscn" id="3_fpug5"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bg1aq8kydikjh" path="res://prefabs/character.tscn" id="9_w2s3n"]
 [ext_resource type="Script" path="res://scripts/player/move.gd" id="10_wn524"]
 [ext_resource type="Script" path="res://scripts/player/score.gd" id="11_t3hug"]
+[ext_resource type="Script" path="res://scenes/progress_bar.gd" id="12_n7yjy"]
 
 [sub_resource type="Animation" id="Animation_6qurb"]
 resource_name = "CharacterArmature|Death"
@@ -4520,12 +4521,13 @@ grow_vertical = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="UI"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 143.0
-offset_bottom = 35.0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_fkye5")
+script = ExtResource("12_n7yjy")
 
 [node name="Label" type="Label" parent="UI"]
 layout_mode = 1
@@ -4560,6 +4562,7 @@ horizontal_alignment = 1
 [connection signal="area_entered" from="Player/Area3D" to="Player/Scripts/Score" method="_on_area_3d_area_entered"]
 [connection signal="idle" from="Player/Scripts/Move" to="Player/Scripts/Anim" method="_on_move_idle"]
 [connection signal="run" from="Player/Scripts/Move" to="Player/Scripts/Anim" method="_on_move_run"]
+[connection signal="increase_bar" from="Player/Scripts/Score" to="UI/ProgressBar" method="_on_score_increase_bar"]
 [connection signal="lose" from="LevelManager" to="Player/Scripts/Anim" method="_on_level_manager_lose"]
 [connection signal="win" from="LevelManager" to="Player/Scripts/Anim" method="_on_level_manager_win"]
 

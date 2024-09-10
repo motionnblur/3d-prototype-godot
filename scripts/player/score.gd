@@ -1,5 +1,7 @@
 extends Node
 
+signal increase_bar
+
 var level_manager
 var progress_bar: ProgressBar
 var audio: AudioStreamPlayer
@@ -11,6 +13,7 @@ func _ready() -> void:
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	area.queue_free()
-	progress_bar.value += 5
+	#progress_bar.value += 5
 	audio.play()
 	level_manager.increaseGoalCount()
+	increase_bar.emit()
