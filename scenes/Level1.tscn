@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bg4qm1eumyu0f"]
+[gd_scene load_steps=41 format=3 uid="uid://bg4qm1eumyu0f"]
 
 [ext_resource type="PackedScene" uid="uid://jhxxbkwv63qe" path="res://prefabs/terrain.tscn" id="2_ogd1d"]
 [ext_resource type="PackedScene" uid="uid://d11jf4p1rle2a" path="res://prefabs/coin.tscn" id="3_fpug5"]
@@ -4409,6 +4409,50 @@ bg_color = Color(0.955476, 0.519475, 0.396316, 1)
 render_priority = 0
 shader = ExtResource("14_wgeql")
 
+[sub_resource type="Animation" id="Animation_ww4uv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c2b2s"]
+resource_name = "cursor_rotate"
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array()
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pmcl8"]
+_data = {
+"RESET": SubResource("Animation_ww4uv"),
+"cursor_rotate": SubResource("Animation_c2b2s")
+}
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("9_w2s3n")]
@@ -4605,6 +4649,13 @@ unique_name_in_owner = true
 
 [node name="Arrow" parent="Cursor" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_qlgv5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cursor/Arrow" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_pmcl8")
+}
+autoplay = "cursor_rotate"
+speed_scale = 0.6
 
 [connection signal="area_entered" from="Player/Area3D" to="Player/Scripts/Score" method="_on_area_3d_area_entered"]
 [connection signal="idle" from="Player/Scripts/Move" to="Player/Scripts/Anim" method="_on_move_idle"]
