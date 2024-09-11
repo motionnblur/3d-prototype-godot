@@ -82,53 +82,6 @@ func _process(delta: float) -> void:
 					idle.emit()
 					level_manager.isWin()
 					
-	#print(currentPosIndis, gotoPos.size())
-	#var ray_length = 100
-	#var from = camera.project_ray_origin(mouse_pos)
-	#var to = from + camera.project_ray_normal(mouse_pos) * ray_length
-	#var space = player.get_world_3d().direct_space_state
-	#var ray_query = PhysicsRayQueryParameters3D.new()
-	#ray_query.from = from
-	#ray_query.to = to
-	#ray_query.collide_with_areas = true
-	#var raycast_result = space.intersect_ray(ray_query)
-	#
-	#if leftClickPressed && level_manager.current_step > 0:
-		#if raycast_result and raycast_result.collider.name != "sphere":
-			#leftClickPressed = false
-			#
-			#var pos = raycast_result.position
-			#pos.y = player.position.y
-	#
-			#if gotoPos.size() == 0:
-				#gotoPos.append(player.transform.origin) 
-			#gotoPos.append(pos)
-			#drawStart = true
-			##cursor.show()
-			#cursor.position = Vector3(pos.x, 0.01, pos.z)
-			#level_manager.addStep()
-			#run.emit()
-	#
-	#if currentPosIndis < gotoPos.size() && currentPosIndis != gotoPos.size():
-		#if gotoPos[currentPosIndis] != Vector3.ZERO && gotoPos[currentPosIndis] != player.transform.origin:
-			#player.transform.origin = player.transform.origin.move_toward(gotoPos[currentPosIndis], delta * 2)
-		#else:
-			#if currentPosIndis <= gotoPos.size():
-				#currentPosIndis += 1
-				#if currentPosIndis < gotoPos.size():
-					#player.look_at(gotoPos[currentPosIndis], -Vector3.UP)
-				#if currentPosIndis == gotoPos.size():
-					#idle.emit()
-					#gotoPos.clear()
-					#currentPosIndis = 0
-					#level_manager.end()
-#
-	#if drawStart && gotoPos.size() > 0:
-		#for n in range(0, gotoPos.size()-1):
-			#var line_begin2 = Vector3(gotoPos[n].x, 0.1, gotoPos[n].z)
-			#var line_end2 = Vector3(gotoPos[n+1].x, 0.1, gotoPos[n+1].z)
-			#DebugDraw3D.draw_line(line_begin2, line_end2)
-			#
 			
 func moveCursorWithPointer(v: Vector3) -> void:
 	cursor.position = v
