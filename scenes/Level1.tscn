@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bg1aq8kydikjh" path="res://prefabs/character.tscn" id="9_w2s3n"]
 [ext_resource type="Script" path="res://scripts/player/move.gd" id="10_wn524"]
 [ext_resource type="Script" path="res://scripts/player/score.gd" id="11_t3hug"]
-[ext_resource type="Script" path="res://scenes/progress_bar.gd" id="12_n7yjy"]
+[ext_resource type="Script" path="res://scripts/ui/progress_bar.gd" id="12_n7yjy"]
 [ext_resource type="PackedScene" uid="uid://wt08fetq3ssl" path="res://prefabs/arrow3d.tscn" id="13_criol"]
 [ext_resource type="Shader" path="res://shaders/node_3d.gdshader" id="14_wgeql"]
 

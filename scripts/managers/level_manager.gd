@@ -35,7 +35,7 @@ func addStep() -> void:
 func increaseGoalCount() -> void:
 	goal_counter += 1
 		
-func end() -> void:
+func isWin() -> void:
 	if goal_counter == goals:
 		win.emit()
 		label2.text = "Win"
