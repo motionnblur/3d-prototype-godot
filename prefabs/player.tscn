@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://swt4q57m2mye"]
+
+[ext_resource type="Script" path="res://scripts/player/score.gd" id="1_gy4jb"]
+[ext_resource type="Script" path="res://scripts/player/move.gd" id="3_rjhw4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ydlkx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7oyq0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mlhbm"]
+
+[node name="Player" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32525, 0)
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ydlkx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_7oyq0")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_mlhbm")
+
+[node name="Scripts" type="Node" parent="."]
+
+[node name="Move" type="Node" parent="Scripts"]
+script = ExtResource("3_rjhw4")
+
+[node name="Score" type="Node" parent="Scripts"]
+script = ExtResource("1_gy4jb")
+
+[connection signal="area_entered" from="Area3D" to="Scripts/Score" method="_on_area_3d_area_entered"]

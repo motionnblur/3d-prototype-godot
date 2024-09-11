@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://jhxxbkwv63qe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_74jhx"]
+size = Vector3(10.0977, 0.102234, 9.99438)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_la6ry"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccyms"]
+albedo_color = Color(0.00368827, 0.0238748, 0.0135652, 1)
+
+[node name="Terrain" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00151062, 0.0071106, -0.026001)
+shape = SubResource("BoxShape3D_74jhx")
+
+[node name="terrain" type="MeshInstance3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("PlaneMesh_la6ry")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ccyms")
