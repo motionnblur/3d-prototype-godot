@@ -14,7 +14,7 @@ Welcome to **3d-prototype-godot** project ! This is a basic 3D game prototype de
 - Clone the repo
 - Download assets.zip file from the link below and extract it into **3dtest** folder
 - Link: **https://drive.google.com/file/d/18_Xc-sXDRTh9-gUpY7OIOho-aFr5BB4F/view?usp=sharing**
-- After all this steps, the file system should look like this.
+- After all these steps, the file system should look like this.
 - ![1](https://github.com/user-attachments/assets/e5b7217d-8a67-423e-aca0-231594083095)
 
 
