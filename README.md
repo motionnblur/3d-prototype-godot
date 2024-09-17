@@ -9,6 +9,7 @@ Welcome to **3d-prototype-godot** project ! This is a basic 3D game prototype de
 - Basic camera movement with clamp features
 - Zoom in and zoom out with clamp features
 - Basic UI elements and feedback
+- Message passing using godot signals
 
 ## How to
 - Clone the repo
